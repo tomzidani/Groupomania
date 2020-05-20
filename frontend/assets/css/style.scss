@@ -1,0 +1,226 @@
+// Global
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+*{outline: none; font-family: 'Poppins'; text-decoration: none; font-weight: 500;}
+body{margin: 0;}
+a{color: #000;}
+
+// Variables
+	// Responsive
+	$breakpoints: (
+		mobile: 767px,
+		tablette: 992px,
+	);
+
+	// Couleurs
+	$red: #bf3636;
+
+// Mixins
+	// Responsive
+	@mixin mobile{@media only screen and (max-width: map-get($breakpoints, mobile)){ @content }}
+	@mixin tablette{@media only screen and (max-width: map-get($breakpoints, tablette)){ @content }}
+
+// Responsive
+.content{
+	padding-right: 15px;padding-left: 15px;margin-right: auto;margin-left: auto; width: 90%; max-width: 1170px;
+	@include mobile{max-width: 500px;}
+	@include tablette{max-width: 750px;}	
+}
+
+// Backgrounds
+.b-white{background-color: #fff;}
+.b-red{background-color: $red}
+
+// Couleurs
+.red{color: $red;}
+.white{color: #fff;}
+
+// Boutons
+.button{padding: 15px; box-sizing: border-box; text-align: center; transition: ease-in-out .2s; cursor: pointer;}
+
+// Page d'index
+.index{
+
+	// Partie gauche
+	.left{
+		width: 50%; height: 100%; padding: 25px; box-sizing: border-box; position: absolute; float: left; padding-top: 70px;
+		@include mobile{width: 100%; position: relative;}
+
+		// Header
+		> header {
+			margin-bottom: 100px;
+			> img{margin: 0 auto; display: block;}
+		}
+
+		// Formulaire
+		> form {
+			max-width: 70%; margin: 0 auto;
+			> label {color: #fff; width: 100%; display: block; box-sizing: border-box; font-size: 16px;}
+			> input {
+				padding: 10px; border: none; width: 100%; box-sizing: border-box; font-size: 17px; margin-bottom: 25px;
+				&:focus{opacity: 0.9}
+			}
+			> span.error{color: lighten($red, 40%); font-size: 12px; width: 100%; text-align: left;}
+			> input.error, select.error{border: solid 2px lighten($red, 40%);}
+			> span{
+				width: 18%; display: inline-block; box-sizing: border-box; text-align: center; color: #fff;
+				@include tablette{margin: 10px auto; display: block;}
+			}
+			.button{
+				width: 39.7%; border: solid 2px #fff; color: #fff; &:hover{background-color: lighten($red, 20%);} display: inline-block;
+				@include tablette{display: block; width: 100%;}
+			}
+		}
+
+		// Footer
+		> footer{
+			text-align: center; position: absolute; bottom: 40px; width: calc(100% - 50px);
+			@include mobile{position: relative; top: 0px; width: 100%; margin-top: 70px;}
+			> p{padding: 0; margin: 0;}
+		}
+	}
+
+	// Partie droite
+	.right{
+		width: 50%; height: 100%; padding: 25px; box-sizing: border-box; float: right; padding-top: 70px; position: absolute; right: 0;
+		@include mobile{width: 100%; position: relative;}
+		> h1{text-align: center; padding: 0; margin: 0}
+		> img{display: block; margin: 0 auto; margin-top: 100px; @include mobile{max-width: 300px;}}
+
+		// Footer
+		> footer{
+			text-align: center; width: 100%; position: absolute; bottom: 40px;
+			@include mobile{position: relative; bottom: 0; margin-top: 50px;}
+			> ul{
+				list-style: none; display: flex; margin: 0 auto; padding: 0; justify-content: center;
+				> li{ margin-right: 20px; margin-left: 20px;}
+			}
+		}
+	}
+}
+
+// Page d'inscription
+.register{
+background-image: url('../img/background-2.png'); background-size: 100%;
+
+	// Formulaire
+	> .form-box{
+		width: 50%; margin: 0 auto; padding: 15px; margin-top: 50px; box-shadow: 0 0 0 4px #ededed; max-width: 700px;
+		@include tablette{width: 70%;}
+		@include mobile{width: 80%; margin-bottom: 50px;}
+		img{display: block; margin: 0 auto; margin-bottom: 40px; @include mobile{max-width: 270px;}}
+		> form{
+			> .field-input{
+				width: 49.6%; box-sizing: border-box; display: inline-block; padding-left: 10px; padding-right: 10px;
+				@include mobile{width: 100%;}
+
+				> label {color: #000; width: 100%; display: block; box-sizing: border-box; font-size: 16px;}
+				> span.error{color: $red; font-size: 12px;}
+				> input.error, select.error{border: solid 2px $red;}
+				> input, select {
+					padding: 10px; border: solid 2px #ededed; width: 100%; box-sizing: border-box; font-size: 17px; margin-bottom: 25px;
+					&:focus{opacity: 0.9}
+				}
+				> select{height: 50px;}
+			}
+		}
+
+		.button{margin-right: 10px; margin-left: 10px; &.b-red:hover{background-color: lighten($red, 20%);}}
+		.border{border: solid 2px $red; margin-top: 10px;}
+	}
+}
+
+// Page d'accueil
+.home{
+
+	// Header
+	> header{
+		padding: 15px; background-color: $red; margin-bottom: 20px;
+		img{display: block; margin: 0 auto;}
+	}
+
+	.modal{
+		position: fixed; background: #0000007d; width: 100%; height: 100%; top: 0; left: 0; bottom: 0; right: 0; display: none;
+		> .box{
+			width: 50%; background-color: #fff; padding: 15px; margin: 0 auto; position: relative; top: 150px;
+			h2{font-weight: 300; padding: 0; margin: 0; margin-bottom: 20px;}
+			i{position: absolute; right: 20px; top: 20px; font-size: 23px; cursor: pointer;}
+			input, select {
+				padding: 10px; border: solid 2px #ededed; width: 100%; box-sizing: border-box; font-size: 17px; margin-bottom: 15px; font-weight: 300;
+				&:focus{opacity: 0.9}
+			}
+			span.error{color: $red; font-size: 12px; display: block;}
+			input.error, select.error{border: solid 2px $red;}			
+			.button{font-size: 14px;}
+		}
+	}
+	// Partie gauche
+	.left{
+		width: 60%; box-sizing: border-box; display: inline-block; float: left; padding: 15px;
+		@include mobile{width: 100%; float: right;}
+
+		// Formulaire
+		form{
+			margin-bottom: 20px;
+			span.error{color: $red; font-size: 12px; width: 100%; text-align: left;}
+			textarea.error{border: solid 2px $red;}			
+			textarea{resize: none; width: 100%; border: solid 4px #ededed; font-size: 15px; padding: 15px; box-sizing: border-box; font-weight: 300; height: 100px;}
+			.pictures{
+				display: flex;
+				#picture{display: none;}
+				label{padding: 15px; border: solid 4px #cecece; display: inline-block; background: #ededed; cursor: pointer;}
+				.picture-preview{display: inline-block; height: 63px; width: 63px; background-size: 100%; background-position: center; margin-left: 10px;}
+			}
+			.button{width: 100%;margin-top:10px;}
+		}
+
+		// Post
+		.post{
+			width: 100%; padding: 15px; background: #fff; box-sizing: border-box; border: solid 4px #ededed; margin-top: 10px;
+
+			> .infos{
+				font-weight: 400; margin-bottom: 10px;
+				.edit{
+					float: right;
+					i{margin-left: 10px; cursor: pointer;}
+				}
+			}
+			> .edit{
+				display: none;
+				textarea{width: 100%; box-sizing: border-box; border: solid 2px #ededed; resize: none; font-size: 14px; font-weight: 300; height: 100px;}
+			}
+			p{padding: 0; margin: 0; font-weight: 300; font-size: 14px;}
+			img{max-width: 100%; margin-top: 10px;}
+		}
+	}
+
+	// Partie droite
+	.right{
+		width: 40%; box-sizing: border-box;	float: right; padding: 15px; 
+		@include mobile{width: 100%; float: left;}
+
+		// Informations
+		.infos{
+			text-align: center; border-bottom: solid 1px #ededed; padding-bottom: 15px; margin-bottom: 15px;
+			.profile-pic{width: 150px; height: 150px; border-radius: 100%; background-image: url('../img/user.png'); background-size: 120%; background-repeat: no-repeat; background-position: center; margin: 0 auto;}
+			h2{padding: 0; margin: 0; font-weight: 300;}
+		}
+
+		// Liens
+		.links{
+			.b-white{
+				border: solid 2px $red; padding: 5px;margin-bottom: 5px; transition: ease-in-out .2s;
+				&:hover{background-color: $red; color: #fff;}
+			}
+		}
+
+		// Footer
+		footer{
+			margin-top: 30px;
+			ul{
+				list-style: none; padding: 0; margin: 0; display: flex; justify-content: center;
+				li{padding: 0; margin: 0; font-weight: 400; font-size: 12px; margin-left: 15px; margin-right: 15px;}
+			}
+		}
+	}
+}
