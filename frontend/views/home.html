@@ -28,15 +28,16 @@
 
 	<div class="content">
 		<div class="left">
-			<form enctype="multipart/formdata">
+			<form method="POST" enctype="multipart/formdata" id="applicationForm">
 				<span class="error" id="error-post"></span>
-				<textarea placeholder="Que voulez-vous dire, Prénom?" id="message"></textarea>
+				<textarea placeholder="Que voulez-vous dire, Prénom?" id="message" name="message"></textarea>
+				<input type="hidden" id="post-user-id">
 				<div class="pictures">
 					<label for="picture">Envoyer une image</label>
 					<input type="file" name="picture" id="picture">
 					<div class="picture-preview" id="picture-preview"></div>
 				</div>
-				<div class="button b-red white" id="post">Publier</div>
+				<button class="button b-red white" id="post" type="submit">Publier</button>
 			</form>
 			<div id="posts">
 			</div>

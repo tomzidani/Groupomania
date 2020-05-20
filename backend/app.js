@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 
 // Utilisation de l'administration de la route d'image
-app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Utilisation des routes
 app.use('/api/auth', authRoutes);

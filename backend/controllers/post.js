@@ -4,10 +4,16 @@ const database = new Database();
 
 // Ajouter un post
 exports.addPost = (req, res, next) => {
-  
-    // Déclaration des variables userId et message
+
+    console.log(req.file);
+
+    // Déclaration des variables userId et message et picture
     const userId = req.body.userId;
     const message = req.body.message;
+    var picture = null;
+
+    // Si l'utilisateur a envoyé une image
+    if(req.file){ picture = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`}
 
     // S'il manque une donnée on retourne un code 500
     if(!userId || !message) return res.status(500).json({ error: 'Bad request' });
@@ -26,15 +32,17 @@ exports.addPost = (req, res, next) => {
                 userId: userId,
                 name: result.name,
                 surname: result.surname,
-                message: message
+                message: message,
+                picture: picture
             };
 
+            console.log(post);
             // Insertion du message dans la base de données
             database.query('INSERT INTO posts SET ?', post)
                 .then(() => res.status(201).json({ message: 'Post created' }))
                 .catch(err => res.status(400).json(err));
         })
-        .catch(err => res.status(400).json(err));
+        .catch(err => {res.status(400).json(err); console.log(err)});
 };
 
 // Récupérer les derniers posts

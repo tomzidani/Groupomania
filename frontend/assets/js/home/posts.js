@@ -1,6 +1,7 @@
 // Déclaration des variables
 const postBtn = document.getElementById("post");
 const inputPost = document.getElementById("message");
+const inputFile = document.getElementById("picture");
 const postsDiv = document.getElementById("posts");
 const regex = /^[a-zA-Z0-9 _.,!()&éèàç&#@']+$/;
 
@@ -13,7 +14,7 @@ fetch('https://localhost:3000/api/posts', {
 
         // Boucle affichant progressivement chaque post dans le feed
         for(let i = 0; i < data.length; i++){
-
+            
             // Création du  HTML
             let articlePost = '<article class="post">';
             articlePost += '<div class="infos">' + data[i].name.toUpperCase() + ' ' + data[i].surname;
@@ -27,7 +28,13 @@ fetch('https://localhost:3000/api/posts', {
             } else {
                 articlePost += '</div>';
             }
-            articlePost += '<p id="post'+ data[i].id + '">'+ data[i].message +'</p></article>';
+            articlePost += '<p id="post'+ data[i].id + '">'+ data[i].message +'</p>';
+
+            if(data[i].picture !== "" && data[i].picture !== null){
+                articlePost += '<img src="'+ data[i].picture +'">';
+            }
+
+            articlePost += '</article>';
 
             // Ajout du HTML
             postsDiv.innerHTML += articlePost;
@@ -37,7 +44,7 @@ fetch('https://localhost:3000/api/posts', {
 
 // Ajouter un post
 function addPost() {
-    
+
     // Si l'utilisateur n'est pas connecté
     if(!userId){
         document.location.href = "/";
@@ -68,21 +75,25 @@ function addPost() {
     // Si le message a passé les vérifications
     if(postOk === true){
 
+        // Déclaration des variables
+        var form = $('#applicationForm')[0];
+        var data = new FormData(form);
+
+        var formData = new FormData(form);
+        formData.append('userId', userId);
+        
         // Envoi des informations
-        fetch('https://localhost:3000/api/posts', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer '+ token
-            },
-            body: JSON.stringify({
-                userId: userId,
-                message: inputPost.value
-            })
-        })
-        .then(res => {
-            if(res.status === 201) location.reload();
-        })
+        $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: "https://localhost:3000/api/posts",
+            data: formData,
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: (res) => { location.reload() },
+            error: (e) => {console.log(e);}
+        });
     }
 }
 
@@ -150,4 +161,9 @@ function deletePost(id, userPostId){
 }
 
 // Ajout des évènements
-postBtn.addEventListener("click", addPost);
+$(document).ready( () => {
+    $("#post").click((event) => {
+        event.preventDefault();
+        addPost();
+    });
+});
