@@ -85,6 +85,9 @@ function addPost() {
         // Envoi des informations
         $.ajax({
             type: "POST",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Bearer '+ token);
+            },
             enctype: 'multipart/form-data',
             url: "https://localhost:3000/api/posts",
             data: formData,

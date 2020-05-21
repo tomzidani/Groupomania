@@ -80,15 +80,15 @@ function register(){
 					const token = data.token;
 					const userId = data.userId;
 
-					// Création de la date d'expiration
-					var tomorrow = new Date();
-					tomorrow.setDate(tomorrow.getDate() + 1);
-
+		       		// Création de la date d'expiration
+				   	var expDate = new Date();
+				   	expDate.setHours(expDate.getHours() + 4);
+   
 					// Ajout du cookie et redirection
-					document.cookie = "token="+ token +"; expires= "+ tomorrow;
-					document.cookie = "userId="+ userId +"; expires= "+ tomorrow;
-					document.cookie = "isAdmin=0; expires= "+ tomorrow;
-					document.location.href = "/home";
+					document.cookie = "token="+ token +"; expires= "+ expDate;
+				   	document.cookie = "userId="+ userId +"; expires= "+ expDate;
+				  	document.cookie = "isAdmin="+ isAdmin +"; expires= "+ expDate;
+				  	document.location.href = "/home";
 					
                     break;
                 case '409':
