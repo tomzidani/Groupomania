@@ -139,6 +139,7 @@ background-image: url('../img/background-2.png'); background-size: 100%;
 		img{display: block; margin: 0 auto;}
 	}
 
+	// Modal
 	.modal{
 		position: fixed; background: #0000007d; width: 100%; height: 100%; top: 0; left: 0; bottom: 0; right: 0; display: none;
 		> .box{
@@ -164,14 +165,20 @@ background-image: url('../img/background-2.png'); background-size: 100%;
 			margin-bottom: 20px;
 			span.error{color: $red; font-size: 12px; width: 100%; text-align: left;}
 			textarea.error{border: solid 2px $red;}			
-			textarea{resize: none; width: 100%; border: solid 4px #ededed; font-size: 15px; padding: 15px; box-sizing: border-box; font-weight: 300; height: 100px;}
+			textarea{
+				resize: none; width: 100%; border: solid 4px #ededed; font-size: 15px; padding: 15px; box-sizing: border-box; font-weight: 300; height: 100px; transition: ease-in-out .2s;
+				&:focus{border-color: $red}
+			}
 			.pictures{
 				display: flex;
 				#picture{display: none;}
 				label{padding: 15px; border: solid 4px #cecece; display: inline-block; background: #ededed; cursor: pointer;}
 				.picture-preview{display: inline-block; height: 63px; width: 63px; background-size: 100%; background-position: center; margin-left: 10px;}
 			}
-			.button{width: 100%;margin-top:10px;}
+			.button{
+				width: 100%;margin-top:10px; font-size: 15px;
+				&:hover{ background: lighten($red, 20%);}
+			}
 		}
 
 		// Post

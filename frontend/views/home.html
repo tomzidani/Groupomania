@@ -8,6 +8,7 @@
 	</head>
 	<body>
 		<div class="home">
+			<!-- Modal -->
 			<div class="modal" id="modal">
 				<div class="box">
 					<h2>Suppression du compte</h2>
@@ -22,6 +23,8 @@
 					</form>
 				</div>
 			</div>
+
+			<!-- Header -->
 			<header>
 				<div class="content">
 					<img src="/img/logo-white.svg" width="230" />
@@ -29,7 +32,9 @@
 			</header>
 
 			<div class="content">
+				<!-- Partie gauche -->
 				<div class="left">
+					<!-- Formulaire-->
 					<form method="POST" enctype="multipart/formdata" id="applicationForm">
 						<span class="error" id="error-post"></span>
 						<textarea
@@ -46,22 +51,27 @@
 							Publier
 						</button>
 					</form>
+
+					<!-- Posts -->
 					<div id="posts"></div>
 				</div>
+
+				<!-- Partie droite -->
 				<div class="right">
 					<div class="infos">
-						<div class="profile-pic"></div>
 						<h2 id="field-user-infos">NOM Prénom</h2>
 					</div>
 					<div class="links">
 						<div class="button b-white red" id="settings">Paramètres</div>
 						<div class="button b-white red" id="logout">Déconnexion</div>
 					</div>
+
+					<!-- Footer -->
 					<footer>
 						<ul>
 							<li><a href="mailto:tom.zidani@gmail.com">Support</a></li>
-							<li><a href="" target="_blank">CGU</a></li>
-							<li><a href="" target="_blank">Mentions légales</a></li>
+							<li><a href="#">CGU</a></li>
+							<li><a href="#">Mentions légales</a></li>
 						</ul>
 					</footer>
 				</div>
@@ -82,6 +92,6 @@
 		<script type="text/javascript" src="/js/home/userInfos.js"></script>
 		<script type="text/javascript" src="/js/home/userSettings.js"></script>
 		<script type="text/javascript" src="/js/home/posts.js"></script>
-		<script type="text/javascript" src="/js/home.js"></script>
+		<script type="text/javascript" src="/js/home/preview.js"></script>
 	</body>
 </html>

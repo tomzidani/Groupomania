@@ -50,6 +50,12 @@ function login() {
 			}),
 		})
 			.then(function (res) {
+				if (res.status === 429) {
+					error(
+						'email',
+						'Maximum de requêtes atteintes, veuillez rééssayer ultérieurement'
+					);
+				}
 				status = res.status;
 				return res.json();
 			})

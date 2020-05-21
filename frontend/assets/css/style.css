@@ -309,7 +309,10 @@ a {
       padding: 15px;
       box-sizing: border-box;
       font-weight: 300;
-      height: 100px; }
+      height: 100px;
+      transition: ease-in-out .2s; }
+      .home .left form textarea:focus {
+        border-color: #bf3636; }
     .home .left form .pictures {
       display: flex; }
       .home .left form .pictures #picture {
@@ -329,7 +332,10 @@ a {
         margin-left: 10px; }
     .home .left form .button {
       width: 100%;
-      margin-top: 10px; }
+      margin-top: 10px;
+      font-size: 15px; }
+      .home .left form .button:hover {
+        background: #db8080; }
   .home .left .post {
     width: 100%;
     padding: 15px;
