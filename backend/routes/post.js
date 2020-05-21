@@ -10,7 +10,7 @@ const auth = require('../middleware/auth');
 const multer = require('../middleware/multer-config');
 
 // Définition des routes
-router.post('/', auth, multer.single("picture"), postCtrl.addPost);
+router.post('/', auth, multer.single('picture'), postCtrl.addPost);
 router.post('/delete/:id', auth, postCtrl.deletePost);
 router.put('/:id', auth, postCtrl.editPost);
 router.get('/', auth, postCtrl.getLastsPosts);

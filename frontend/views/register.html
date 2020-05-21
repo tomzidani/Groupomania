@@ -1,63 +1,70 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Groupomania: Inscription</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
-</head>
-<body class="register">
+	<head>
+		<title>Groupomania: Inscription</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	</head>
+	<body class="register">
+		<div class="form-box b-white">
+			<a href="/"><img src="/img/logo-red.png" width="300" /></a>
 
-<div class="form-box b-white">
-	<a href="/"><img src="/img/logo-red.png" width="300"></a>
+			<!-- Formulaire -->
+			<form>
+				<div class="field-input">
+					<label for="name">Nom</label
+					><span class="error" id="error-name"></span>
+					<input type="text" name="name" id="name" />
+				</div>
 
-	<!-- Formulaire -->
-	<form>
-		<div class="field-input">
-			<label for="name">Nom</label><span class="error" id="error-name"></span>
-			<input type="text" name="name" id="name">
+				<div class="field-input">
+					<label for="surname">Prénom</label
+					><span class="error" id="error-surname"></span>
+					<input type="text" name="surname" id="surname" />
+				</div>
+
+				<div class="field-input">
+					<label for="email">Adresse e-mail</label
+					><span class="error" id="error-email"></span>
+					<input type="text" name="email" id="email" />
+				</div>
+
+				<div class="field-input">
+					<label for="password">Mot de passe</label
+					><span class="error" id="error-password"></span>
+					<input type="password" name="password" id="password" />
+				</div>
+
+				<div class="field-input">
+					<label for="repassword">Confirmer mot de passe</label
+					><span class="error" id="error-repassword"></span>
+					<input type="password" name="repassword" id="repassword" />
+				</div>
+
+				<div class="field-input">
+					<label for="gender">Genre</label
+					><span class="error" id="error-gender"></span>
+					<select id="gender">
+						<option value="O">Autre</option>
+						<option value="M">Homme</option>
+						<option value="F">Femme</option>
+					</select>
+				</div>
+			</form>
+
+			<!-- Boutons -->
+			<div class="button b-red white" id="register">Confirmer</div>
+			<a href="/"><div class="button b-white red border">Retour</div></a>
 		</div>
 
-		<div class="field-input">
-			<label for="surname">Prénom</label><span class="error" id="error-surname"></span>
-			<input type="text" name="surname" id="surname">
-		</div>
-
-		<div class="field-input">
-			<label for="email">Adresse e-mail</label><span class="error" id="error-email"></span>
-			<input type="text" name="email" id="email">
-		</div>
-
-		<div class="field-input">
-			<label for="password">Mot de passe</label><span class="error" id="error-password"></span>
-			<input type="password" name="password" id="password">
-		</div>
-
-		<div class="field-input">
-			<label for="repassword">Confirmer mot de passe</label><span class="error" id="error-repassword"></span>
-			<input type="password" name="repassword" id="repassword">
-		</div>	
-
-		<div class="field-input">
-			<label for="gender">Genre</label><span class="error" id="error-gender"></span>
-			<select id="gender">
-				<option value="O">Autre</option>
-				<option value="M">Homme</option>
-				<option value="F">Femme</option>
-			</select>
-		</div>
-	</form>	
-
-	<!-- Boutons -->
-	<div class="button b-red white" id="register">Confirmer</div>
-	<a href="/"><div class="button b-white red border">Retour</div></a>
-</div>
-
-<!-- Scripts -->
-<script src="https://kit.fontawesome.com/a8264338ad.js" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/js/cookie.js"></script>
-<script type="text/javascript" src="/js/error.js"></script>
-<script type="text/javascript" src="/js/register.js"></script>
-
-</body>
+		<!-- Scripts -->
+		<script
+			src="https://kit.fontawesome.com/a8264338ad.js"
+			crossorigin="anonymous"
+		></script>
+		<script type="text/javascript" src="/js/cookie.js"></script>
+		<script type="text/javascript" src="/js/error.js"></script>
+		<script type="text/javascript" src="/js/register.js"></script>
+	</body>
 </html>

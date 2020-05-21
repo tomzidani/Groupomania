@@ -1,75 +1,87 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-<head>
-	<title>Groupomania: Accueil</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
-</head>
-<body>
-
-<div class="home">
-	<div class="modal" id="modal">
-		<div class="box">
-			<h2>Suppression du compte</h2>
-			<i class="fas fa-times" id="close"></i>
-			<form>
-				<label for="password">Mot de passe</label><span class="error" id="error-password"></span>
-				<input type="password" id="password">
-				<div class="button b-red white" id="deleteaccount">Supprimer mon compte</div>
-			</form>
-		</div>
-	</div>
-	<header>
-		<div class="content">
-			<img src="/img/logo-white.svg" width="230">
-		</div>
-	</header>
-
-	<div class="content">
-		<div class="left">
-			<form method="POST" enctype="multipart/formdata" id="applicationForm">
-				<span class="error" id="error-post"></span>
-				<textarea placeholder="Que voulez-vous dire, Prénom?" id="message" name="message"></textarea>
-				<div class="pictures">
-					<label for="picture">Envoyer une image</label>
-					<input type="file" name="picture" id="picture">
-					<div class="picture-preview" id="picture-preview"></div>
+	<head>
+		<title>Groupomania: Accueil</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	</head>
+	<body>
+		<div class="home">
+			<div class="modal" id="modal">
+				<div class="box">
+					<h2>Suppression du compte</h2>
+					<i class="fas fa-times" id="close"></i>
+					<form>
+						<label for="password">Mot de passe</label
+						><span class="error" id="error-password"></span>
+						<input type="password" id="password" />
+						<div class="button b-red white" id="deleteaccount">
+							Supprimer mon compte
+						</div>
+					</form>
 				</div>
-				<button class="button b-red white" id="post" type="submit">Publier</button>
-			</form>
-			<div id="posts">
+			</div>
+			<header>
+				<div class="content">
+					<img src="/img/logo-white.svg" width="230" />
+				</div>
+			</header>
+
+			<div class="content">
+				<div class="left">
+					<form method="POST" enctype="multipart/formdata" id="applicationForm">
+						<span class="error" id="error-post"></span>
+						<textarea
+							placeholder="Que voulez-vous dire, Prénom?"
+							id="message"
+							name="message"
+						></textarea>
+						<div class="pictures">
+							<label for="picture">Envoyer une image</label>
+							<input type="file" name="picture" id="picture" />
+							<div class="picture-preview" id="picture-preview"></div>
+						</div>
+						<button class="button b-red white" id="post" type="submit">
+							Publier
+						</button>
+					</form>
+					<div id="posts"></div>
+				</div>
+				<div class="right">
+					<div class="infos">
+						<div class="profile-pic"></div>
+						<h2 id="field-user-infos">NOM Prénom</h2>
+					</div>
+					<div class="links">
+						<div class="button b-white red" id="settings">Paramètres</div>
+						<div class="button b-white red" id="logout">Déconnexion</div>
+					</div>
+					<footer>
+						<ul>
+							<li><a href="mailto:tom.zidani@gmail.com">Support</a></li>
+							<li><a href="" target="_blank">CGU</a></li>
+							<li><a href="" target="_blank">Mentions légales</a></li>
+						</ul>
+					</footer>
+				</div>
 			</div>
 		</div>
-		<div class="right">
-			<div class="infos">
-				<div class="profile-pic"></div>
-				<h2 id="field-user-infos">NOM Prénom</h2>
-			</div>
-			<div class="links">
-				<div class="button b-white red" id="settings">Paramètres</div>
-				<div class="button b-white red" id="logout">Déconnexion</div>
-			</div>
-			<footer>
-				<ul>
-					<li><a href="mailto:tom.zidani@gmail.com">Support</a></li>
-					<li><a href="" target="_blank">CGU</a></li>
-					<li><a href="" target="_blank">Mentions légales</a></li>
-				</ul>
-			</footer>
-		</div>
-	</div>
-</div>
 
-<!-- Scripts -->
-<script src="https://kit.fontawesome.com/a8264338ad.js" crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" src="/js/error.js"></script>
-<script type="text/javascript" src="/js/cookie.js"></script>
-<script type="text/javascript" src="/js/home/userInfos.js"></script>
-<script type="text/javascript" src="/js/home/userSettings.js"></script>
-<script type="text/javascript" src="/js/home/posts.js"></script>
-<script type="text/javascript" src="/js/home.js"></script>
-
-</body>
+		<!-- Scripts -->
+		<script
+			src="https://kit.fontawesome.com/a8264338ad.js"
+			crossorigin="anonymous"
+		></script>
+		<script
+			type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+		></script>
+		<script type="text/javascript" src="/js/error.js"></script>
+		<script type="text/javascript" src="/js/cookie.js"></script>
+		<script type="text/javascript" src="/js/home/userInfos.js"></script>
+		<script type="text/javascript" src="/js/home/userSettings.js"></script>
+		<script type="text/javascript" src="/js/home/posts.js"></script>
+		<script type="text/javascript" src="/js/home.js"></script>
+	</body>
 </html>

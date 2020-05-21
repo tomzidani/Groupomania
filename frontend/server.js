@@ -7,22 +7,22 @@ const app = require('./app');
 
 const options = {
 	key: fs.readFileSync('key.pem'),
-	cert: fs.readFileSync('cert.pem')
+	cert: fs.readFileSync('cert.pem'),
 };
 
 // Fonction renvoyant un port valide
 // peu importe sous la forme fournie?
-const normalizePort = val => {
+const normalizePort = (val) => {
 	const port = parseInt(val, 10);
 
-	if(isNaN(port)){
+	if (isNaN(port)) {
 		return val;
 	}
-	if(port >= 0){
+	if (port >= 0) {
 		return port;
 	}
 	return false;
-}
+};
 
 // Définition du port
 const port = normalizePort(process.env.PORT || 8080);
@@ -30,13 +30,13 @@ app.set('port', port);
 
 // Recherche les différentes erreurs et
 // les gère de façon appropriée.
-const errorHandler = error => {
-	if(error.syscall !== 'listen'){
+const errorHandler = (error) => {
+	if (error.syscall !== 'listen') {
 		throw error;
 	}
 	const address = server.address();
 	const bind = typeof adress === 'string' ? ' pipe' + address : 'port' + port;
-	switch(error.code){
+	switch (error.code) {
 		case 'EACCES':
 			console.error(bind + ' requires elevated privileges.');
 			process.exit(1);

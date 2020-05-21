@@ -1,63 +1,66 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Groupomania</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
-</head>
-<body>
+	<head>
+		<title>Groupomania</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	</head>
+	<body>
+		<div class="index">
+			<!-- Partie gauche -->
+			<div class="b-red left">
+				<!-- Header -->
+				<header>
+					<img src="/img/logo-white.svg" width="300" />
+				</header>
 
-<div class="index">
+				<!-- Formulaire -->
+				<form>
+					<label for="password">Adresse e-mail</label
+					><span class="error" id="error-email"></span>
+					<input type="text" name="email" id="email" />
 
-	<!-- Partie gauche -->
-	<div class="b-red left">
+					<label for="password">Mot de passe</label
+					><span class="error" id="error-password"></span>
+					<input type="password" name="password" id="password" />
 
-		<!-- Header -->
-		<header>
-			<img src="/img/logo-white.svg" width="300">			
-		</header>
+					<div class="button b-red" id="login">Se connecter</div>
+					<span>OU</span>
+					<a href="/register"><div class="button b-red">S'inscrire</div></a>
+				</form>
 
-		<!-- Formulaire -->
-		<form>
-			<label for="password">Adresse e-mail</label><span class="error" id="error-email"></span>
-			<input type="text" name="email" id="email">
+				<!-- Footer -->
+				<footer>
+					<p class="white">
+						Réalisé avec <i class="far fa-heart"></i> par Tom Zidani
+					</p>
+				</footer>
+			</div>
 
-			<label for="password">Mot de passe</label><span class="error" id="error-password"></span>
-			<input type="password" name="password" id="password">
+			<!-- Partie droite -->
+			<div class="b-white right">
+				<h1>Un réseau social unique</h1>
+				<img src="/img/handshake.png" width="400" />
 
-			<div class="button b-red" id="login">Se connecter</div>
-			<span>OU</span>
-			<a href="/register"><div class="button b-red">S'inscrire</div></a>
-		</form>	
+				<!-- Footer -->
+				<footer>
+					<ul>
+						<li><a href="mailto:tom.zidani@gmail.com">Support</a></li>
+						<li><a href="" target="_blank">CGU</a></li>
+						<li><a href="" target="_blank">Mentions légales</a></li>
+					</ul>
+				</footer>
+			</div>
+		</div>
 
-		<!-- Footer -->
-		<footer>
-			<p class="white">Réalisé avec <i class="far fa-heart"></i> par Tom Zidani</p>
-		</footer>
-	</div>
-
-	<!-- Partie droite -->
-	<div class="b-white right">
-		<h1>Un réseau social unique</h1>
-		<img src="/img/handshake.png" width="400">
-
-		<!-- Footer -->
-		<footer>
-			<ul>
-				<li><a href="mailto:tom.zidani@gmail.com">Support</a></li>
-				<li><a href="" target="_blank">CGU</a></li>
-				<li><a href="" target="_blank">Mentions légales</a></li>
-			</ul>
-		</footer>
-	</div>
-
-</div>
-
-<!-- Scripts -->
-<script src="https://kit.fontawesome.com/a8264338ad.js" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/js/cookie.js"></script>
-<script type="text/javascript" src="/js/error.js"></script>
-<script type="text/javascript" src="/js/index.js"></script>
-</body>
+		<!-- Scripts -->
+		<script
+			src="https://kit.fontawesome.com/a8264338ad.js"
+			crossorigin="anonymous"
+		></script>
+		<script type="text/javascript" src="/js/cookie.js"></script>
+		<script type="text/javascript" src="/js/error.js"></script>
+		<script type="text/javascript" src="/js/index.js"></script>
+	</body>
 </html>
