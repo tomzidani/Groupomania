@@ -1,7 +1,6 @@
 // Importation des packages
 const express = require('express');
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
 const path = require('path');
 
 // Importation des routes

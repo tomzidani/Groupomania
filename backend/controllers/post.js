@@ -56,7 +56,7 @@ exports.addPost = (req, res, next) => {
 // Récupérer les derniers posts
 exports.getLastsPosts = (req, res, next) => {
 	database
-		.query('SELECT * FROM posts ORDER BY -id LIMIT 30')
+		.query('SELECT * FROM posts ORDER BY -id')
 		.then((data) => res.status(200).json(data))
 		.catch((err) => res.status(400).json(err));
 };
@@ -73,11 +73,12 @@ exports.editPost = (req, res, next) => {
 			// Déclaration de la variable result
 			const result = data[0];
 
+			console.log(result.admin);
 			// Si on ne trouve pas l'utilisateur on renvoit un code 404
 			if (!result) return res.status(404).json({ error: 'User not found' });
 
 			// Si l'utilisateur n'est ni admin ni la personne qui a posté le message on renvoit un code 401
-			if (userId !== req.body.userPostId && data.admin !== 1)
+			if (userId !== req.body.userPostId && result.admin === 0)
 				return res.status(401).json({ error: 'Unauthorized' });
 
 			// Mise à jour des informations du post dans la base de données
@@ -107,7 +108,7 @@ exports.deletePost = (req, res, next) => {
 			if (!result) return res.status(404).json({ error: 'User not found' });
 
 			// Si l'utilisateur n'est ni admin ni la personne qui a posté le message on renvoit un code 401
-			if (userId !== req.body.userPostId && data.admin !== 1)
+			if (userId !== req.body.userPostId && result.admin === 0)
 				return res.status(401).json({ error: 'Unauthorized' });
 
 			// Suppression du message

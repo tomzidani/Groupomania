@@ -20,7 +20,7 @@ exports.getOneUser = (req, res, next) => {
 			const user = data[0];
 
 			// Si on ne trouve pas d'utilisateur, on renvoit un code 404
-			if (!user) return res.status(400).json({ error: 'User not find' });
+			if (!user) return res.status(404).json({ error: 'User not find' });
 
 			// Envoi d'un code 200 avec les informations de l'utilisateur
 			res.status(200).json({
