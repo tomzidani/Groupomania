@@ -1,5 +1,5 @@
 // Importation
-const Database = require('../database');
+const Database = require('../lib/database');
 const database = new Database();
 
 // Déclaration des variables

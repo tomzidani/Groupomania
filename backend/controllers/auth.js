@@ -1,7 +1,7 @@
 // Importation
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const Database = require('../database');
+const Database = require('../lib/database');
 const database = new Database();
 
 // Déclaration des variables

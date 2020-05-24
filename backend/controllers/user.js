@@ -1,6 +1,6 @@
 // Importation
 const bcrypt = require('bcrypt');
-const Database = require('../database');
+const Database = require('../lib/database');
 const database = new Database();
 
 // Récupérer un seul utilisateur
