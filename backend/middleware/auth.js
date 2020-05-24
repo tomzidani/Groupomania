@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
 	if (authHeader) {
 		const token = authHeader.split(' ')[1];
 
-		jwt.verify(token, 'RANDOM_TOKEN_SECRET', (err, user) => {
+		jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
 			if (err) {
 				return res.status(403);
 			}

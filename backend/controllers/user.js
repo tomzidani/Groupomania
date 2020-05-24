@@ -12,9 +12,7 @@ exports.getOneUser = (req, res, next) => {
 	if (!userId) return res.status(500).json({ error: 'Bad request' });
 
 	database
-		.query('SELECT id, name, surname, admin FROM users WHERE id = ? LIMIT 1', [
-			userId,
-		])
+		.query('SELECT id, name, surname, admin FROM users WHERE id = ?', [userId])
 		.then((data) => {
 			// Déclaration de la variable user
 			const user = data[0];

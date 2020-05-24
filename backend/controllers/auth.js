@@ -4,6 +4,11 @@ const bcrypt = require('bcrypt');
 const Database = require('../database');
 const database = new Database();
 
+// Déclaration des variables
+const regex = /^[a-zA-Z _.éèà']+$/;
+const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+
 // Inscription de l'utilisateur
 exports.signup = (req, res, next) => {
 	// Déclaration de la variable user
@@ -13,8 +18,20 @@ exports.signup = (req, res, next) => {
 	if (!user.surname || !user.name || !user.email || !user.password)
 		return res.status(500).json({ error: 'Bad request' });
 
+	if (!regex.test(user.surname) || !regex.test(user.name))
+		return res.status(500).json({ error: 'Invalid characters' });
+
+	if (!emailRegex.test(user.email))
+		return res.status(500).json({ error: 'Invalid email' });
+
+	if (!passwordRegex.test(user.password))
+		return res.status(500).json({
+			error:
+				'Password must contain 8 characters with 1 uppercase 1 lowercase and 1 number',
+		});
+
 	database
-		.query('SELECT email FROM users WHERE email = ? LIMIT 1', [req.body.email])
+		.query('SELECT email FROM users WHERE email = ?', [req.body.email])
 		.then((data) => {
 			// Déclaration du résultat
 			const result = data[0];
@@ -47,7 +64,7 @@ exports.signup = (req, res, next) => {
 									userId: userId,
 									isAdmin: 0,
 								},
-								'RANDOM_TOKEN_SECRET',
+								process.env.TOKEN_SECRET,
 								{
 									expiresIn: '4h',
 								}
@@ -98,7 +115,7 @@ exports.login = (req, res, next) => {
 							userId: userId,
 							isAdmin: result.admin,
 						},
-						'RANDOM_TOKEN_SECRET',
+						process.env.TOKEN_SECRET,
 						{
 							expiresIn: '4h',
 						}

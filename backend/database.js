@@ -5,10 +5,10 @@ const mysql = require('mysql');
 module.exports = class Database {
 	constructor() {
 		this.con = mysql.createConnection({
-			host: 'localhost',
-			user: 'root',
-			password: 'password',
-			database: 'groupomania',
+			host: process.env.DB_HOST,
+			user: process.env.DB_USER,
+			password: process.env.DB_PASS,
+			database: process.env.DB_NAME,
 		});
 	}
 	query(sql, args) {

@@ -2,10 +2,11 @@
 const Database = require('../database');
 const database = new Database();
 
+// Déclaration des variables
+const regex = /^[a-zA-Z0-9 _.,!()&éèàç&#@']+$/;
+
 // Ajouter un post
 exports.addPost = (req, res, next) => {
-	console.log(req.file);
-
 	// Déclaration des variables userId et message et picture
 	const userId = req.body.userId;
 	const message = req.body.message;
@@ -22,8 +23,11 @@ exports.addPost = (req, res, next) => {
 	if (!userId || !message)
 		return res.status(500).json({ error: 'Bad request' });
 
+	if (!regex.test(message))
+		return res.status(500).json({ error: 'Invalid characters' });
+
 	database
-		.query('SELECT id, name, surname FROM users WHERE id = ? LIMIT 1', [userId])
+		.query('SELECT id, name, surname FROM users WHERE id = ?', [userId])
 		.then((data) => {
 			// Déclaration de la variable result
 			const result = data[0];
@@ -40,17 +44,13 @@ exports.addPost = (req, res, next) => {
 				picture: picture,
 			};
 
-			console.log(post);
 			// Insertion du message dans la base de données
 			database
 				.query('INSERT INTO posts SET ?', post)
 				.then(() => res.status(201).json({ message: 'Post created' }))
 				.catch((err) => res.status(400).json(err));
 		})
-		.catch((err) => {
-			res.status(400).json(err);
-			console.log(err);
-		});
+		.catch((err) => res.status(400).json(err));
 };
 
 // Récupérer les derniers posts
@@ -66,6 +66,13 @@ exports.editPost = (req, res, next) => {
 	// Déclaration des variables id et userId
 	const id = req.params.id;
 	const userId = req.body.userId;
+	const message = req.body.message;
+
+	if (!message || !userId || !id)
+		return res.status(500).json({ error: 'Bad request' });
+
+	if (!regex.test(message))
+		return res.status(500).json({ error: 'Invalid characters' });
 
 	database
 		.query('SELECT id, admin FROM users WHERE id = ?', [userId])
@@ -73,7 +80,6 @@ exports.editPost = (req, res, next) => {
 			// Déclaration de la variable result
 			const result = data[0];
 
-			console.log(result.admin);
 			// Si on ne trouve pas l'utilisateur on renvoit un code 404
 			if (!result) return res.status(404).json({ error: 'User not found' });
 
@@ -83,10 +89,7 @@ exports.editPost = (req, res, next) => {
 
 			// Mise à jour des informations du post dans la base de données
 			database
-				.query('UPDATE posts SET message = ? WHERE id = ?', [
-					req.body.message,
-					id,
-				])
+				.query('UPDATE posts SET message = ? WHERE id = ?', [message, id])
 				.then(() => res.status(200).json({ message: 'Post edited' }))
 				.catch((err) => res.status(400).json(err));
 		})
@@ -97,6 +100,8 @@ exports.deletePost = (req, res, next) => {
 	// Déclaration des variables id et userId
 	const id = req.params.id;
 	const userId = req.body.userId;
+
+	if (!id || !userId) return res.status(500).json({ error: 'Bad request' });
 
 	database
 		.query('SELECT id, admin FROM users WHERE id = ?', [userId])
