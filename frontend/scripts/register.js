@@ -26,42 +26,42 @@ function register() {
 	const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
 
 	// Si les champs sont vides
-	if (name != '') {
+	if (name !== '') {
 		nameOk = true;
 		error('name');
 	} else {
 		nameOk = false;
 		error('name', 'Les champs sont vides');
 	}
-	if (surname != '') {
+	if (surname !== '') {
 		surnameOk = true;
 		error('surname');
 	} else {
 		surnameOk = false;
 		error('surname', 'Les champs sont vides');
 	}
-	if (email != '') {
+	if (email !== '') {
 		emailOk = true;
 		error('email');
 	} else {
 		emailOk = false;
 		error('email', 'Les champs sont vides');
 	}
-	if (password != '') {
+	if (password !== '') {
 		passwordOk = true;
 		error('password');
 	} else {
 		passwordOk = false;
 		error('password', 'Les champs sont vides');
 	}
-	if (repassword != '') {
+	if (repassword !== '') {
 		repasswordOk = true;
 		error('repassword');
 	} else {
 		repasswordOk = false;
 		error('repassword', 'Les champs sont vides');
 	}
-	if (gender != '') {
+	if (gender !== '') {
 		genderOk = true;
 		error('gender');
 	} else {

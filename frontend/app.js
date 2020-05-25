@@ -7,6 +7,7 @@ const app = express();
 app.engine('html', require('ejs').renderFile);
 
 app.use(express.static('assets'));
+app.use(express.static('scripts'));
 app.use(express.static('uploads'));
 
 app.get('/', function (req, res) {
